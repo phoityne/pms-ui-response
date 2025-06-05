@@ -9,10 +9,10 @@ It acts as the final output stage, transforming typed results from the applicati
 ---
 
 ## Package Structure
-![Package Structure](./docs/12-1.png)
+![Package Structure](https://raw.githubusercontent.com/phoityne/pms-ui-response/main/docs/12-1.png)
 ---
 
 ## Module Structure
-![Module Structure](./docs/12-2.png)
+![Module Structure](https://raw.githubusercontent.com/phoityne/pms-ui-response/main/docs/12-2.png)
 
 ---

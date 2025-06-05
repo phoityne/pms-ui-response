@@ -10,6 +10,7 @@ import qualified Control.Concurrent.STM as STM
 import System.IO
 import System.Posix.IO
 import Control.Lens
+import Data.List (isInfixOf)
 
 import qualified PMS.Domain.Model.DM.Type as DM
 import qualified PMS.UI.Response.App.Control as SUT
@@ -90,24 +91,26 @@ tearDown ctx = do
 --
 run :: SpecWith SpecContext
 run = do
-  describe "runApp" $ do
-    context "when AppData default" $ do
-      it "should be run" $ \ctx -> do 
+  describe "runWithAppData" $ do
+    context "when InitializeRequest" $ do
+      it "should be InitializeResponse" $ \ctx -> do 
         putStrLn "[INFO] EXECUTING THE FIRST TEST."
 
         let readH  = fst $ ctx^.handlePairSpecContext
             domDat = ctx^.domainDataSpecContext
             appDat = ctx^.appDataSpecContext
-            queue   = domDat^.DM.responseQueueDomainData
-            expect = DM.McpInitializeResponse def 
+            queue  = domDat^.DM.responseQueueDomainData
+            res    = DM.McpInitializeResponse def
+            expect = True
             
         thId <- async $ SUT.runWithAppData appDat domDat
 
-        STM.atomically $ STM.writeTQueue queue expect
+        STM.atomically $ STM.writeTQueue queue res
 
-        actual <- hGetLine readH
-        putStrLn $ show actual
-        -- actual `shouldBe` expect
+        jsonStr <- hGetLine readH
+
+        let actual = "tool" `isInfixOf` jsonStr
+        actual `shouldBe` expect
 
         cancel thId
       
