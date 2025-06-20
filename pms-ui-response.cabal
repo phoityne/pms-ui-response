@@ -56,7 +56,7 @@ extra-doc-files:    README.md,
 
 library
     -- Import common warning flags.
-    ghc-options: -Wall
+    ghc-options: -Wall -threaded
 
     -- Modules exported by the library.
     exposed-modules:  PMS.UI.Response.DM.Type,
@@ -96,7 +96,7 @@ library
 
 test-suite pms-ui-response-test
     -- Import common warning flags.
-    ghc-options: -Wall
+    ghc-options: -Wall -threaded
 
     -- Base language which the package is written in.
     default-language: GHC2021
