@@ -90,14 +90,29 @@ mcp2json (DM.McpPromptsListResponse dat) = do
       result = encode $ dat^.DM.resultMcpPromptsListResponseData
       res = json {DM._resultJsonRpcResponse = DM.RawJsonByteString result}
   return res
-mcp2json (DM.McpCompleteResponse dat) = do
-  let json = DM.defaultJsonRpcResponse $ dat^.DM.jsonrpcMcpCompleteResponseData
-      result = encode $ dat^.DM.resultMcpCompleteResponseData
-      res = json {DM._resultJsonRpcResponse = DM.RawJsonByteString result}
-  return res
 mcp2json (DM.McpPromptsGetResponse dat) = do
   let json = DM.defaultJsonRpcResponse $ dat^.DM.jsonrpcMcpPromptsGetResponseData
       result = encode $ dat^.DM.resultMcpPromptsGetResponseData
+      res = json {DM._resultJsonRpcResponse = DM.RawJsonByteString result}
+  return res
+mcp2json (DM.McpResourcesTemplatesListResponse dat) = do
+  let json = DM.defaultJsonRpcResponse $ dat^.DM.jsonrpcMcpResourcesTemplatesListResponseData
+      result = encode $ dat^.DM.resultMcpResourcesTemplatesListResponseData
+      res = json {DM._resultJsonRpcResponse = DM.RawJsonByteString result}
+  return res
+mcp2json (DM.McpResourcesListResponse dat) = do
+  let json = DM.defaultJsonRpcResponse $ dat^.DM.jsonrpcMcpResourcesListResponseData
+      result = encode $ dat^.DM.resultMcpResourcesListResponseData
+      res = json {DM._resultJsonRpcResponse = DM.RawJsonByteString result}
+  return res
+mcp2json (DM.McpResourcesReadResponse dat) = do
+  let json = DM.defaultJsonRpcResponse $ dat^.DM.jsonrpcMcpResourcesReadResponseData
+      result = encode $ dat^.DM.resultMcpResourcesReadResponseData
+      res = json {DM._resultJsonRpcResponse = DM.RawJsonByteString result}
+  return res
+mcp2json (DM.McpCompleteResponse dat) = do
+  let json = DM.defaultJsonRpcResponse $ dat^.DM.jsonrpcMcpCompleteResponseData
+      result = encode $ dat^.DM.resultMcpCompleteResponseData
       res = json {DM._resultJsonRpcResponse = DM.RawJsonByteString result}
   return res
 
