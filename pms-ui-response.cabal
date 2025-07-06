@@ -72,7 +72,7 @@ library
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.21.0.0,
+    build-depends:    base,
                       data-default,
                       monad-logger,
                       mtl,
@@ -117,7 +117,7 @@ test-suite pms-ui-response-test
     main-is:          Spec.hs
 
     -- Test dependencies.
-    build-depends:    base ^>=4.21.0.0,
+    build-depends:    base,
                       hspec,
                       hspec-discover,
                       data-default,
